@@ -1,0 +1,26 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.0.1"
+    hooks:
+      - id: check-yaml
+        # {{cookiecutter.package_name}}/.github/workflows/ci.yml contains Jinja tags that check-yaml cannot parse
+        exclude: "{{cookiecutter.package_name}}/.github/workflows/ci.yml"
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/psf/black
+    rev: "21.9b0" # This should be kept in sync with the version in {{cookiecutter.package_name}}/requirements.dev.in
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/pycqa/isort
+    rev: "5.9.3" # This should be kept in sync with the version in {{cookiecutter.package_name}}/requirements.dev.in
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: "6.1.1" # This should be kept in sync with the version in {{cookiecutter.package_name}}/requirements.dev.in
+    hooks:
+      - id: pydocstyle
+        additional_dependencies: ["toml"]
+        files: "{{cookiecutter.package_name}}/src/{{cookiecutter.package_name}}"
