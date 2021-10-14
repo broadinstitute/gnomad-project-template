@@ -49,6 +49,8 @@ def test_precommit_hooks_in_new_project(session):
         session.cd(os.path.join(temp_dir, "gnomad_project_template_test"))
 
         session.run("git", "init", "-b", "main", external=True)
+        session.run("git", "config", "user.email", "test@example.com", external=True)
+        session.run("git", "config", "user.name", "a test script", external=True)
         session.install("pre-commit")
         session.run("pre-commit", "install")
         session.run("git", "add", ".", external=True)
