@@ -14,7 +14,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
     "sphinx_autodoc_typehints",
-    "recommonmark",
+    "myst_parser",
 ]
 
 exclude_patterns = []
