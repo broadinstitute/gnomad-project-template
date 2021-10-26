@@ -42,20 +42,6 @@ def build_docs(session):
     session.install(".")
 
     session.cd("docs")
-    session.run("rm", "-rf", "api_reference")
-    session.run("./generate_api_reference.py")
-
-    session.run("rm", "-rf", "html")
-    session.run("python", "-m", "sphinx", "-W", "-b", "html", ".", "html")
-
-
-@nox.session
-def build_docs(session):
-    session.install("-r", "docs/requirements.docs.txt")
-    session.install("wheel", "hail")
-    session.install(".")
-
-    session.cd("docs")
     session.run("rm", "-rf", "api_reference", external=True)
     session.run("python3", "generate_api_reference.py")
 
