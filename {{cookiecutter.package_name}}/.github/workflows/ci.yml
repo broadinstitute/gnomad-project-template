@@ -22,16 +22,24 @@ jobs:
           key: {% raw %}pip-${{ hashFiles('**/requirements*.txt') }}{% endraw %}
           restore-keys: |
             pip-
-      - name: Install nox
-        run: pip install nox
+      - name: Install development tools
+        run: pip install -r requirements.dev.txt
       - name: Check formatting
-        run: nox -s format
+        run: |
+          black .
+          isort .
       - name: Check docstrings
-        run: nox -s pydocstyle
+        run: pydocstyle src/{{ cookiecutter.package_name }}
+      - name: Install package
+        run: |
+          pip install wheel hail
+          pip install .
       - name: Run Pylint
-        run: nox -s lint
+        run: |
+          pylint src/{{ cookiecutter.package_name }}
+          pylint tests
       - name: Run tests
-        run: nox -s test
+        run: pytest
   docs:
     name: Build documentation
     runs-on: ubuntu-latest
