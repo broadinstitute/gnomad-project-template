@@ -22,21 +22,9 @@ This template sets up a Python project with:
 
 - Generate the project directory. Enter a project name when prompted.
 
-  To clone the template repository using HTTPS, use:
-
   ```
   cookiecutter gh:broadinstitute/gnomad-project-template
   ```
-
-  Note that this requires a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) in place of a password.
-
-  Or, to clone the template repository using SSH, use:
-
-  ```
-  cookiecutter git@github.com:broadinstitute/gnomad-project-template.git
-  ```
-
-  For more information about cloning using HTTPS vs SSH, see ["About remote repositories"](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories).
 
 ### GitHub repository settings
 
